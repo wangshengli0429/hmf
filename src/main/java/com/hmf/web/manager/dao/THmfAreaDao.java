@@ -1,7 +1,11 @@
 package com.hmf.web.manager.dao;
 
 import com.hmf.web.entity.THmfArea;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Repository
 public interface THmfAreaDao {
     int deleteByPrimaryKey(Integer id);
 
