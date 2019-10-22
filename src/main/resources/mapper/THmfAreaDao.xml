@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmf.web.manager.dao.THmfAreaDao">
+  <resultMap id="BaseResultMap" type="com.hmf.web.entity.THmfArea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="area_desc" jdbcType="VARCHAR" property="areaDesc" />
+    <result column="create_at_id" jdbcType="INTEGER" property="createAtId" />
+    <result column="create_at_name" jdbcType="VARCHAR" property="createAtName" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, area_name, area_code, area_desc, create_at_id, create_at_name, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_hmf_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_hmf_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hmf.web.entity.THmfArea">
+    insert into t_hmf_area (id, area_name, area_code, 
+      area_desc, create_at_id, create_at_name, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{areaName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, 
+      #{areaDesc,jdbcType=VARCHAR}, #{createAtId,jdbcType=INTEGER}, #{createAtName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hmf.web.entity.THmfArea">
+    insert into t_hmf_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="areaDesc != null">
+        area_desc,
+      </if>
+      <if test="createAtId != null">
+        create_at_id,
+      </if>
+      <if test="createAtName != null">
+        create_at_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaDesc != null">
+        #{areaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createAtId != null">
+        #{createAtId,jdbcType=INTEGER},
+      </if>
+      <if test="createAtName != null">
+        #{createAtName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hmf.web.entity.THmfArea">
+    update t_hmf_area
+    <set>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaDesc != null">
+        area_desc = #{areaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createAtId != null">
+        create_at_id = #{createAtId,jdbcType=INTEGER},
+      </if>
+      <if test="createAtName != null">
+        create_at_name = #{createAtName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hmf.web.entity.THmfArea">
+    update t_hmf_area
+    set area_name = #{areaName,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      area_desc = #{areaDesc,jdbcType=VARCHAR},
+      create_at_id = #{createAtId,jdbcType=INTEGER},
+      create_at_name = #{createAtName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

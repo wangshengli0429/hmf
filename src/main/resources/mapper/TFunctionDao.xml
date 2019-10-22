@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmf.web.manager.dao.TFunctionDao">
+  <resultMap id="BaseResultMap" type="com.hmf.web.entity.TFunction">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="function_name" jdbcType="VARCHAR" property="functionName" />
+    <result column="publish_url" jdbcType="VARCHAR" property="publishUrl" />
+    <result column="publish_time" jdbcType="VARCHAR" property="publishTime" />
+    <result column="show_index" jdbcType="INTEGER" property="showIndex" />
+    <result column="start_using" jdbcType="CHAR" property="startUsing" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, function_name, publish_url, publish_time, show_index, start_using, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_function
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_function
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hmf.web.entity.TFunction">
+    insert into t_function (id, function_name, publish_url, 
+      publish_time, show_index, start_using, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{functionName,jdbcType=VARCHAR}, #{publishUrl,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=VARCHAR}, #{showIndex,jdbcType=INTEGER}, #{startUsing,jdbcType=CHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hmf.web.entity.TFunction">
+    insert into t_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="functionName != null">
+        function_name,
+      </if>
+      <if test="publishUrl != null">
+        publish_url,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="showIndex != null">
+        show_index,
+      </if>
+      <if test="startUsing != null">
+        start_using,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="functionName != null">
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishUrl != null">
+        #{publishUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="showIndex != null">
+        #{showIndex,jdbcType=INTEGER},
+      </if>
+      <if test="startUsing != null">
+        #{startUsing,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hmf.web.entity.TFunction">
+    update t_function
+    <set>
+      <if test="functionName != null">
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="publishUrl != null">
+        publish_url = #{publishUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="showIndex != null">
+        show_index = #{showIndex,jdbcType=INTEGER},
+      </if>
+      <if test="startUsing != null">
+        start_using = #{startUsing,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hmf.web.entity.TFunction">
+    update t_function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      publish_url = #{publishUrl,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=VARCHAR},
+      show_index = #{showIndex,jdbcType=INTEGER},
+      start_using = #{startUsing,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

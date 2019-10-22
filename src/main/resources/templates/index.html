@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>测试跨域CORS</title>
+<!--<link href="css/style.css" rel="stylesheet" type="text/css">-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	$("#cors").click(function(){
+		alert("111111");
+		$.ajax({
+			url:"http://crm.allits.com.cn/index/login",
+			success:function(data){
+				alert(data.token);
+			}
+		})
+		alert("2222222");
+		$.ajax({
+			url:"http://localhost:8080/wechat_order/getCode",
+			success:function(data){
+				alert(data);
+			}
+		})
+	});
+});
+</script>
+</head>
+<body>
+	<input type="button" id="cors" value="CORS测试点击" />
+	<IMG src="http://localhost:8080/crm/users/qrcode?width=100&height=100&format=GIF&userName=wangfuzai">
+</body>
+</html>

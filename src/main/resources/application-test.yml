@@ -1,0 +1,94 @@
+#数据源配置
+spring:
+#多个数据源
+#datasource1:
+#  driver-class-name: com.mysql.jdbc.Driver
+#  jdbc-url: jdbc:mysql://localhost:3306/ais?useSSL=false&useUnicode=true&characterEncoding=utf-8
+#  username: root
+#  password:
+
+#datasource2:
+#  driver-class-name: com.mysql.jdbc.Driver
+#  jdbc-url: jdbc:mysql://localhost:3316/miyang?useSSL=false&useUnicode=true&characterEncoding=utf-8
+#  username: root
+#  password: 123
+#单个数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smb?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username:
+    password:
+ ##################以下为druid增加的配置###########################
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间大
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+     # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙，此处是filter修改的地方
+    filters:
+      commons-log.connection-logger-name: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+#限制上传文件大小
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 10MB
+# Mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.edianzu.web.entity
+#SQL打印日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 配置端口
+server:
+  port: 8088
+
+#日志配置
+logging:
+  config: classpath:conf/logback-test.xml
+  level:
+    learning: info
+
+#服务商短信参数
+submail:
+  appid: 30945
+  appkey: 2131b09e5466a6da4ab86963e0ccda38
+  signtype: md5
+
+
+#文件上传地址
+xcloud:
+  uploadPath: uploadFile
+  #开发环境开关 close 关闭 open 打开
+  devSwitch: close
+  #报修工单数量限制
+  caseSize: 3
+
+#项目域名访问
+project:
+  domainName:
+    url:
+    sign:
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params:
