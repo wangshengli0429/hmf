@@ -60,8 +60,8 @@ public class WebConfig  extends WebMvcConfigurerAdapter implements WebMvcConfigu
 //        String[] excludes = new String[]{"/crm/users/login","/wechat_user/**","/resources/**"};
 //        registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/**").excludePathPatterns(excludes);
     //签名拦截
-        String[] permissionExclude = new String[]{"/static/*","/uploadFile/*","/crm/users/login","/error"};
-        registry.addInterceptor(signatureInterceptor()).excludePathPatterns(permissionExclude).addPathPatterns("/app/**");
+//        String[] permissionExclude = new String[]{"/static/*","/uploadFile/*","/crm/users/login","/error"};
+//        registry.addInterceptor(signatureInterceptor()).excludePathPatterns(permissionExclude).addPathPatterns("/app/**");
         //权限拦截
 //        String[] permissionExclude = new String[]{"/static/*","/uploadFile/*","/crm/users/login","/error"};
 //        registry.addInterceptor(securityInterceptor()).excludePathPatterns(permissionExclude).addPathPatterns("/crm/**");

@@ -5,6 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="gender" jdbcType="CHAR" property="gender" />
     <result column="card_type" jdbcType="CHAR" property="cardType" />
@@ -16,7 +18,7 @@
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_name, user_pwd, real_name, gender, card_type, card_no, phone, wx_no, wx_id, 
+    id, user_name, user_pwd, real_name, gender, card_type, card_no, phone, wx_no, wx_id,
     create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -26,12 +28,13 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <insert id="insert" parameterType="com.hmf.web.entity.TUser">
-    insert into t_user (id, user_name, user_pwd, 
-      real_name, gender, card_type, 
+    insert into t_user (id, user_name, user_pwd, salt, token,
+      real_name, gender, card_type,
       card_no, phone, wx_no, 
       wx_id, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR},
+     #{salt,jdbcType=VARCHAR},  #{token,jdbcType=VARCHAR},
       #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{cardType,jdbcType=CHAR}, 
       #{cardNo,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{wxNo,jdbcType=VARCHAR}, 
       #{wxId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}
@@ -51,6 +54,12 @@
       </if>
       <if test="realName != null">
         real_name,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="token != null">
+        token,
       </if>
       <if test="gender != null">
         gender,
@@ -86,6 +95,12 @@
       </if>
       <if test="userPwd != null">
         #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
       </if>
       <if test="realName != null">
         #{realName,jdbcType=VARCHAR},
@@ -178,4 +193,10 @@
   </update>
 
 
+  <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+     id, user_name, user_pwd, salt, token, real_name, gender, card_type, card_no, phone, wx_no, wx_id
+    from t_user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
 </mapper>

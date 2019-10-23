@@ -1,7 +1,16 @@
 #生效环境
 spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
   profiles:
     active: dev
+
 #测试环境
 #spring:
 #   profiles:

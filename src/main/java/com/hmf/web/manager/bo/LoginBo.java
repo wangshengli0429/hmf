@@ -13,8 +13,8 @@ import java.math.BigInteger;
 public class LoginBo implements Serializable{
     private static final long serialVersionUID = 1L;
     private String username;
-    private Long gacode;
+//    private Long gacode;
     private String password;
 
-    private BigInteger lastIp;
+//    private BigInteger lastIp;
 }

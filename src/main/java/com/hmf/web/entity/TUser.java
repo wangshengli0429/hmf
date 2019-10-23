@@ -6,6 +6,8 @@ public class TUser {
     private String userName;
 
     private String userPwd;
+    private String salt;
+    private String token;
 
     private String realName;
 
@@ -119,5 +121,21 @@ public class TUser {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime == null ? null : updateTime.trim();
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

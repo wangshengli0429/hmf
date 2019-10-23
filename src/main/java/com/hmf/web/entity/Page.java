@@ -40,5 +40,5 @@ public class Page<T> {
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
 	}
-	
+
 }

@@ -2,6 +2,7 @@ package com.hmf.web.manager.dao;
 
 import com.hmf.web.entity.TUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Mapper
@@ -18,4 +19,6 @@ public interface TUserDao {
     int updateByPrimaryKeySelective(TUser record);
 
     int updateByPrimaryKey(TUser record);
+
+    TUser findByUsername(@Param("userName") String userName);
 }
