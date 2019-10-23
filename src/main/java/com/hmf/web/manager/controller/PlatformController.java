@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/manager")
 public class PlatformController {
 
     private static Logger logger = LoggerFactory.getLogger(PlatformController.class);
@@ -48,30 +49,32 @@ public class PlatformController {
         // shiroLoginFailure:就是shiro异常类的全类名.
         if(StringUtil.isEmpty(username)){
             model.addAttribute("msg","账号不能为空");
-            return "redirect:/toLogin";
+            return "redirect:/manager/toLogin";
         }
         if(StringUtil.isEmpty(password)){
             model.addAttribute("msg","密码不能为空");
-            return "redirect:/toLogin";
+            return "redirect:/manager/toLogin";
         }
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
             subject.login(token);
+
+            //TODO 操作去首页
             return "success";
         }catch (UnknownAccountException ue){
             System.out.println("UnknownAccountException -- > 账号不存在：");
             model.addAttribute("msg","账号不存在");
-            return "redirect:/toLogin";
+            return "redirect:/manager/toLogin";
         }catch (IncorrectCredentialsException ie){
             System.out.println("IncorrectCredentialsException -- > 密码不正确：");
             model.addAttribute("msg","密码不正确");
-            return "/login";
+            return "/manager/login";
         }catch (Exception e){
             logger.info("登陆异常:{0}",e);
             model.addAttribute("msg","系统异常");
-            return "login";
+            return "/manager/login";
         }
     }
 
