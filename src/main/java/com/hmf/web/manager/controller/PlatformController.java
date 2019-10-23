@@ -66,15 +66,16 @@ public class PlatformController {
         }catch (UnknownAccountException ue){
             System.out.println("UnknownAccountException -- > 账号不存在：");
             model.addAttribute("msg","账号不存在");
-            return "redirect:/manager/toLogin";
+            return "login";
         }catch (IncorrectCredentialsException ie){
             System.out.println("IncorrectCredentialsException -- > 密码不正确：");
+            logger.info("用户：{0},密码不正确",username);
             model.addAttribute("msg","密码不正确");
-            return "/manager/login";
+            return "login";
         }catch (Exception e){
-            logger.info("登陆异常:{0}",e);
+            logger.info("用户：{0},登陆异常:{1}",username,e);
             model.addAttribute("msg","系统异常");
-            return "/manager/login";
+            return "login";
         }
     }
 
