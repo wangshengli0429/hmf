@@ -66,7 +66,7 @@ public class PlatformController {
             subject.login(token);
 
             //TODO 操作去首页
-            return "success";
+            return "index";
         }catch (UnknownAccountException ue){
             System.out.println("UnknownAccountException -- > 账号不存在：");
             model.addAttribute("msg","账号不存在");
@@ -93,6 +93,7 @@ public class PlatformController {
     public String logout(HttpSession session, Model model) {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
+        SecurityUtils.getSubject().getSession().removeAttribute("login");
         model.addAttribute("msg","安全退出！");
         return "login";
     }
