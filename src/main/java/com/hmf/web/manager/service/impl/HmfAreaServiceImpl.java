@@ -1,6 +1,7 @@
 package com.hmf.web.manager.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hmf.web.entity.THmfArea;
 import com.hmf.web.manager.dao.THmfAreaDao;
 import com.hmf.web.manager.service.HmfAreaService;
@@ -57,9 +58,10 @@ public class HmfAreaServiceImpl implements HmfAreaService {
         ApiResult apiResult = new ApiResult();
         try {
             List<THmfArea> areaList = hmfAreaDao.selectHmfAreaList(areaName);
+            PageInfo<THmfArea> pageInfo = new PageInfo<>(areaList);
             apiResult.setStatus(HttpCodeEnum.QUERY_CODE_200.getCode());
             apiResult.setMessage(HttpCodeEnum.QUERY_CODE_200.getMessage());
-            apiResult.setData(areaList);
+            apiResult.setData(pageInfo);
         }catch (Exception e){
             logger.info("查询区域异常：{0}",e);
             apiResult.setStatus(HttpCodeEnum.EDIT_CODE_500.getCode());

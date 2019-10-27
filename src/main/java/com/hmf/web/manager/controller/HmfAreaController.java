@@ -19,8 +19,20 @@ public class HmfAreaController {
         return hmfAreaService.insert(area);
     }
 
+    @RequestMapping("/area/list")
+    private ApiResult list(String areaName){
+        return hmfAreaService.selectHmfAreaList(areaName);
+    }
 
+    @RequestMapping("/area/edit")
+    private ApiResult edit(THmfArea area){
+        return hmfAreaService.updateByPrimaryKey(area);
+    }
 
+    @RequestMapping("/area/del")
+    private ApiResult del(Integer id){
+        return hmfAreaService.deleteByPrimaryKey(id);
+    }
 
 
 
