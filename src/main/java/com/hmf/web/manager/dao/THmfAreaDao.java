@@ -4,6 +4,8 @@ import com.hmf.web.entity.THmfArea;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface THmfAreaDao {
@@ -14,6 +16,9 @@ public interface THmfAreaDao {
     int insertSelective(THmfArea record);
 
     THmfArea selectByPrimaryKey(Integer id);
+
+    List<THmfArea> selectHmfAreaList(String areaName);
+
 
     int updateByPrimaryKeySelective(THmfArea record);
 

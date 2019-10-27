@@ -13,12 +13,16 @@ public enum HttpCodeEnum {
     PARAM_CODE_500("valid_500","缺少必填参数"),
 
     DEL_CODE_200("delete_200","删除成功"),
-    DEL_CODE_500("delete_500","删除失败"),
+    DEL_FAIL_CODE_200("delete_fail_200","删除失败"),
+    DEL_CODE_500("delete_500","删除异常"),
     ADD_CODE_200("add_200","新增成功"),
+    ADD_FAIL_CODE_200("add_fail_200","新增成功"),
     ADD_CODE_500("add_500","新增失败"),
-    EIDT_CODE_200("edit_200","修改成功"),
-    EIDT_CODE_500("edit_500","修改失败"),
+    EDIT_CODE_200("edit_200","修改成功"),
+    EDIT_FAIL_CODE_200("edit_fail_200","修改成功"),
+    EDIT_CODE_500("edit_500","修改失败"),
     QUERY_CODE_200("query_200","查询成功"),
+    QUERY_FAIL_CODE_200("query_fail_200","查询成功"),
     QUERY_CODE_500("query_500","查询失败"),
 
 
