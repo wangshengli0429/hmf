@@ -16,10 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/manager")
+@RequestMapping("/")
 public class PlatformController {
 
     private static Logger logger = LoggerFactory.getLogger(PlatformController.class);
@@ -37,9 +38,15 @@ public class PlatformController {
     private MenuService menuService;
 
     @RequestMapping("/test")//测试跳转JSP
+    @ResponseBody
     public String test(){
         return "/test";
     }
+    //打开所有html页面
+//    @RequestMapping("/{view}")
+//    public String html(@PathVariable("view")String view){
+//        return view;
+//    }//其中view就是你要打开的视图哦
 
     @RequestMapping("/toLogin")
     public String toLogin(){
@@ -53,11 +60,11 @@ public class PlatformController {
         // shiroLoginFailure:就是shiro异常类的全类名.
         if(StringUtil.isEmpty(username)){
             model.addAttribute("msg","账号不能为空");
-            return "redirect:/manager/toLogin";
+            return "redirect:/toLogin";
         }
         if(StringUtil.isEmpty(password)){
             model.addAttribute("msg","密码不能为空");
-            return "redirect:/manager/toLogin";
+            return "redirect:/toLogin";
         }
 
         Subject subject = SecurityUtils.getSubject();

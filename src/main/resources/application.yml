@@ -1,15 +1,19 @@
 #生效环境
 spring:
+  profiles:
+      active: dev
+  resources:
+    static-locations: classpath:/static,classpath:/templates
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
     suffix: .html
+    mode: LEGACYHTML5
   mvc:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
-  profiles:
-    active: dev
+
 
 #测试环境
 #spring:
