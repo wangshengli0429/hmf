@@ -13,6 +13,8 @@ public interface HmfAreaService {
 
     ApiResult selectByPrimaryKey(Integer id);
 
+    ApiResult selectHmfAreaList(String areaName);
+
     ApiResult updateByPrimaryKeySelective(THmfArea record);
 
     ApiResult updateByPrimaryKey(THmfArea record);

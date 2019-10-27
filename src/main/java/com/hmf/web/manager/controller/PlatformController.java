@@ -10,16 +10,12 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -40,6 +36,10 @@ public class PlatformController {
     @Autowired
     private MenuService menuService;
 
+    @RequestMapping("/test")//测试跳转JSP
+    public String test(){
+        return "/test";
+    }
 
     @RequestMapping("/toLogin")
     public String toLogin(){
@@ -85,12 +85,11 @@ public class PlatformController {
 
     /**
      * 登出  这个方法没用到,用的是shiro默认的logout
-     * @param session
      * @param model
      * @return
      */
     @RequestMapping("/logout")
-    public String logout(HttpSession session, Model model) {
+    public String logout(Model model) {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         SecurityUtils.getSubject().getSession().removeAttribute("login");
