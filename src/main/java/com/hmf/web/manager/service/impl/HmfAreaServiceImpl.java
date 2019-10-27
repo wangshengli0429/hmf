@@ -91,12 +91,12 @@ public class HmfAreaServiceImpl implements HmfAreaService {
             }
         }catch (Exception e){
             logger.info("新增区域异常：{0}",e);
-            apiResult.setStatus(HttpCodeEnum.ADD_FAIL_CODE_200.getCode());
-            apiResult.setMessage(HttpCodeEnum.ADD_FAIL_CODE_200.getMessage());
+            apiResult.setStatus(HttpCodeEnum.ADD_CODE_500.getCode());
+            apiResult.setMessage(HttpCodeEnum.ADD_CODE_500.getMessage());
             return apiResult;
         }
-        apiResult.setStatus(HttpCodeEnum.ADD_CODE_500.getCode());
-        apiResult.setMessage(HttpCodeEnum.ADD_CODE_500.getMessage());
+        apiResult.setStatus(HttpCodeEnum.ADD_FAIL_CODE_200.getCode());
+        apiResult.setMessage(HttpCodeEnum.ADD_FAIL_CODE_200.getMessage());
         return apiResult;
     }
 
@@ -143,11 +143,11 @@ public class HmfAreaServiceImpl implements HmfAreaService {
             apiResult.setData(hmfArea);
             return apiResult;
         }catch (Exception e){
-            apiResult.setStatus(HttpCodeEnum.QUERY_FAIL_CODE_200.getCode());
-            apiResult.setMessage(HttpCodeEnum.QUERY_FAIL_CODE_200.getMessage());
+            logger.info("查询区域异常：{0}",e);
+            apiResult.setStatus(HttpCodeEnum.QUERY_CODE_500.getCode());
+            apiResult.setMessage(HttpCodeEnum.QUERY_CODE_500.getMessage());
             return apiResult;
         }
-
     }
 
     @Override
@@ -168,12 +168,12 @@ public class HmfAreaServiceImpl implements HmfAreaService {
             }
         }catch (Exception e){
             logger.info("衡美肤区域修改异常:{0}",e);
-            apiResult.setStatus(HttpCodeEnum.EDIT_FAIL_CODE_200.getCode());
-            apiResult.setMessage(HttpCodeEnum.EDIT_FAIL_CODE_200.getMessage());
+            apiResult.setStatus(HttpCodeEnum.EDIT_CODE_500.getCode());
+            apiResult.setMessage(HttpCodeEnum.EDIT_CODE_500.getMessage());
             return apiResult;
         }
-        apiResult.setStatus(HttpCodeEnum.EDIT_CODE_500.getCode());
-        apiResult.setMessage(HttpCodeEnum.EDIT_CODE_500.getMessage());
+        apiResult.setStatus(HttpCodeEnum.EDIT_FAIL_CODE_200.getCode());
+        apiResult.setMessage(HttpCodeEnum.EDIT_FAIL_CODE_200.getMessage());
         return apiResult;
     }
 
