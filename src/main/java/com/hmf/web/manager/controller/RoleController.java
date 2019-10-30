@@ -1,6 +1,8 @@
 package com.hmf.web.manager.controller;
 
+import com.hmf.web.entity.TRole;
 import com.hmf.web.manager.service.RoleService;
+import com.hmf.web.utils.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,19 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("/add/role")
-    public String addRole(){
+    private ApiResult add(TRole role){
+        return roleService.addRole(role);
+    }
 
-        return null;
+
+    @RequestMapping("/role/edit")
+    private ApiResult edit(TRole role){
+        return roleService.updateRole(role);
+    }
+
+    @RequestMapping("/role/del")
+    private ApiResult del(Integer id){
+        return roleService.delRole(id);
     }
 
 }

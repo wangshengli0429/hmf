@@ -26,7 +26,7 @@ public class HmfAreaServiceImpl implements HmfAreaService {
     @Autowired
     private THmfAreaDao hmfAreaDao;
     @Override
-    public ApiResult deleteByPrimaryKey(Integer id) {
+    public ApiResult delHmfAreaById(Integer id) {
         ApiResult apiResult = new ApiResult();
         logger.info("衡美肤区域删除操作id:{0}",id);
         if(id == null){

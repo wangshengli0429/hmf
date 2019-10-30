@@ -5,7 +5,7 @@ import com.hmf.web.utils.ApiResult;
 
 public interface HmfAreaService {
 
-    ApiResult deleteByPrimaryKey(Integer id);
+    ApiResult delHmfAreaById(Integer id);
 
     ApiResult insert(THmfArea record);
 

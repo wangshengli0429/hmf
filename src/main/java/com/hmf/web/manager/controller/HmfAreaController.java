@@ -31,7 +31,7 @@ public class HmfAreaController {
 
     @RequestMapping("/area/del")
     private ApiResult del(Integer id){
-        return hmfAreaService.deleteByPrimaryKey(id);
+        return hmfAreaService.delHmfAreaById(id);
     }
 
 
