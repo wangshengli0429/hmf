@@ -114,4 +114,23 @@
       update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+<!-- 菜单递归查询 begin-->
+  <resultMap type="com.hmf.web.manager.bo.Menu" id="menuTree">
+    <result column="id" property="id" javaType="java.lang.Integer" />
+    <result column="name" property="name" javaType="java.lang.String" />
+    <result column="parentId" property="parentId" javaType="java.lang.Integer" />
+    <collection column="id" property="childrenList" ofType="TMenu" javaType="java.util.ArrayList" select="selectMenuChildrenById"/>
+  </resultMap>
+
+  <select id="selectParentMenuList" resultMap="menuTree">
+        select * from t_menu where parent_id = '0' or parent_id is null
+    </select>
+
+  <!-- 这里的返回结果必须为resultMap，并且值为上面构建的resultMap的id的值 -->
+  <select id="selectMenuChildrenById" resultMap="menuTree" parameterType="java.lang.Integer">
+        select * from t_menu where parent_id = #{id}
+    </select>
+  <!-- 菜单递归查询 end-->
 </mapper>

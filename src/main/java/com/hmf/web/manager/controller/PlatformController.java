@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/manager")
 public class PlatformController {
 
     private static Logger logger = LoggerFactory.getLogger(PlatformController.class);
@@ -60,11 +60,11 @@ public class PlatformController {
         // shiroLoginFailure:就是shiro异常类的全类名.
         if(StringUtil.isEmpty(username)){
             model.addAttribute("msg","账号不能为空");
-            return "redirect:/toLogin";
+            return "redirect:/manager/toLogin";
         }
         if(StringUtil.isEmpty(password)){
             model.addAttribute("msg","密码不能为空");
-            return "redirect:/toLogin";
+            return "redirect:/manager/toLogin";
         }
 
         Subject subject = SecurityUtils.getSubject();
