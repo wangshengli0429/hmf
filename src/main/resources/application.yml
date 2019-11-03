@@ -3,7 +3,7 @@ spring:
   profiles:
       active: dev
   resources:
-    static-locations: classpath:/static,classpath:/templates
+    static-locations: classpath:/static,classpath:/templates,classpath:/WEB-INF/view/
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
