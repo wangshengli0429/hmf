@@ -3,18 +3,23 @@ spring:
   profiles:
       active: dev
   resources:
-    static-locations: classpath:/static,classpath:/templates,classpath:/WEB-INF/view/
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: LEGACYHTML5
+    static-locations: /**
   mvc:
-    view:
-      prefix: /WEB-INF/view/
+    static-path-pattern: /**
+    view: #新版本 1.3后可以使用
+      prefix: /WEB-INF/views/
       suffix: .jsp
-
-
+  view: #老版本 1.4后被抛弃
+      suffix: .jsp
+      prefix: /WEB-INF/
+  thymeleaf:
+      cache: false # 开发时关闭缓存,不然没法看到实时页面
+      mode: LEGACYHTML5 # 用非严格的 HTML
+      encoding: UTF-8
+      prefix: /WEB-INF/
+      suffix: .html
+      servlet:
+          content-type: text/html
 #测试环境
 #spring:
 #   profiles:

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jslib/pic/show.js"></script>
+<link rel="stylesheet" href="jslib/pic/jquery.mobile-1.4.5.css">
+<script type="text/javascript" src="console/js/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jslib/pic/jquery.mobile-1.4.5.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=1.5,user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta name="MobileOptimized" content="320"/>
+<title>图片详情</title>
+<style type="text/css">
+.box{height:100%;width: 100%;background-color: #ff80c0;margin-top: 2rem;position: relative;}
+.img{position: absolute;text-align: center;}
+.font{font-size: 0.9rem;color:#000000;font-weight:normal;word-wrap:break-word; word-break:normal; }
+</style>
+</head>
+<body>
+<div data-role="header">
+  <a href="#" class="ui-btn ui-icon-back ui-btn-icon-left" id="composition">作文原文</a>
+  <h1>图片详情</h1>
+  <a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-left" id="nextImg">下一张</a>
+</div>
+
+<div class="box" align="center" id="main">
+	<div class="img" id="img">
+		<img alt="作文图片" src="" usemap="#mymap" id="image" width="100%">
+		<map name="mymap" id="mymap">
+			<!-- <area id="myarea6" shape="rect" coords="5,5,100,100" href="javascript:void(0)">
+			<area id="myarea7" shape="rect" coords="200,200,300,300" href="javascript:void(0)"> -->
+		</map>
+	</div>
+	
+	
+	<a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" id="myshow" style="display: none" data-position-to="window" data-transition="fade" data-overlay-theme="b">显示弹窗</a>
+
+	<div data-role="popup" id="myPopup" class="ui-content">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right" style="margin: 1rem">关闭</a>
+		<div class="font" id='message'>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.h1{
+	color: #000;
+	font-weight:bold;
+	font-size:30px;
+}
+
+.MsoTitle{
+	color: #000;
+	font-weight:bold;
+	font-size:30px;
+}
+
+.h2{
+	color: #333;
+	font-weight:bold;
+	font-size:26px;
+}
+
+.MsoTitle2{
+	color: #333;
+	font-size:22px;
+	margin: 15px 0px 10px 0px;
+}
+
+.MsoNormal{
+	color: #333;
+	font-size:24px;
+	padding: 0px 10px 0px 10px;
+}
+
+.video-js{
+	text-align:center;
+	margin:0 auto;
+}
+a{
+	word-wrap:break-word; word-break:break-all;
+	/*display:block;
+	text-wrap:normal;
+	word-wrap:break-word; */
+}

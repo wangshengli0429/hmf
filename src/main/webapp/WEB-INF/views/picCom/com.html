@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="myCss.css">
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="overflow-x: auto;overflow-y: auto;">
+	<div class="mainleft" id="toolleft">
+		<div align="center">
+			<a style="font-size: 20px">工具栏</a>
+			<br><br><br>
+		</div>
+		<!-- 铅笔 -->
+		<div class="pleft40">
+			<div class="floatleft tool cursorp" id="thin">
+				<div class="toolthin"></div>
+			</div>
+			<div class="floatleft backgroundgray mleft2 tool cursorp" id="pen">
+				<img src="pencil.png" class="toolimg">
+			</div>
+		</div>
+		<div class="pleft40">
+			<div class="mtop40 tool cursorp" id="thick">
+				<div class="toolthick1"></div>
+				<div class="toolthick2"></div>
+			</div>
+		</div>
+		<!-- 颜色 -->
+		<div class="pleft40 ptop10">
+			<div class="floatleft backgroundred tool cursorp" id="red"></div>
+			<div class="floatleft backgroundgray tool mleft2 cursorp" id="bucket">
+				<img src="fill-bucket.png" class="toolimg">
+			</div>
+		</div>
+		<div class="pleft40">
+			<div class="mtop40 backgroundgreen tool cursorp" id="green"></div>
+			<div class="backgroundblue tool cursorp" id="blue"></div>
+		</div>
+		<!-- 功能 -->
+		<div class="pleft40 mtop10 mleft42">
+			<div class="toolFont cursorp" id="comment">批注</div>
+			<div class="toolFont mtop10 cursorp" id="clear">撤销</div>
+			<div class="toolFont mtop10 cursorp" id="download">保存</div>
+		</div>
+	
+		
+	</div>
+	<div class="mainright">
+		<div class="mycanvas">
+			<canvas id="xxx" class="canvas"></canvas>
+		</div>
+		<div class="mymessage" id="messagemain">
+			<div id="messagelist" >
+				<div class="messagehead" align="center">批注详情，点击可进行修改</div>
+				<br>
+			</div>
+			
+			<div class="messageshow" id="message">
+				<div >
+					<textarea style="border-style: solid;border-color: red;width: 100%;height: 400px;" placeholder="请输入您的修改建议" id="textarea"></textarea>
+				</div>
+				<div class="messagetoollist">
+					<div id="cancel" class="messagetool">取消</div>
+					<div id="messagesure" class="messagetool">确定</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+<script src="main.js"></script>
+<script src="other.js"></script>
+</body>
+</html>

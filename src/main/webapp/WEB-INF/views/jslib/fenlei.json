@@ -1,0 +1,200 @@
+{
+  "sucai": [
+    {
+      "CODE": "024001",
+      "CODE_NAME": "好词",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024002",
+      "CODE_NAME": "好句",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024004",
+      "CODE_NAME": "好开头",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024005",
+      "CODE_NAME": "好结尾",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024008",
+      "CODE_NAME": "课本素材",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024009",
+      "CODE_NAME": "常用素材",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024010",
+      "CODE_NAME": "经典素材",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    },
+    {
+      "CODE": "024011",
+      "CODE_NAME": "全能素材",
+      "CODE_TYPE": "024",
+      "CODE_TYPE_NAME": "素材类型"
+    }
+  ],
+  "fanwen": [
+    {
+      "CODE": "013001",
+      "CODE_NAME": "日记",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013002",
+      "CODE_NAME": "周记",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013003",
+      "CODE_NAME": "看图作文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013006",
+      "CODE_NAME": "记叙文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013007",
+      "CODE_NAME": "议论文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013008",
+      "CODE_NAME": "说明文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013009",
+      "CODE_NAME": "散文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013010",
+      "CODE_NAME": "小说",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "013012",
+      "CODE_NAME": "应用文",
+      "CODE_TYPE": "013",
+      "CODE_TYPE_NAME": "体裁类型"
+    },
+    {
+      "CODE": "033001",
+      "CODE_NAME": "写人",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033003",
+      "CODE_NAME": "写景",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033004",
+      "CODE_NAME": "状物",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033005",
+      "CODE_NAME": "想象",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    }
+  ],
+  "jifa": [
+    {
+      "CODE": "032001",
+      "CODE_NAME": "记叙文技法",
+      "CODE_TYPE": "032",
+      "CODE_TYPE_NAME": "体裁技法类型"
+    },
+    {
+      "CODE": "032002",
+      "CODE_NAME": "说明文技法",
+      "CODE_TYPE": "032",
+      "CODE_TYPE_NAME": "体裁技法类型"
+    },
+    {
+      "CODE": "032003",
+      "CODE_NAME": "议论文技法",
+      "CODE_TYPE": "032",
+      "CODE_TYPE_NAME": "体裁技法类型"
+    },
+    {
+      "CODE": "032004",
+      "CODE_NAME": "散文技法",
+      "CODE_TYPE": "032",
+      "CODE_TYPE_NAME": "体裁技法类型"
+    },
+    {
+      "CODE": "032005",
+      "CODE_NAME": "小说技法",
+      "CODE_TYPE": "032",
+      "CODE_TYPE_NAME": "体裁技法类型"
+    },
+    {
+      "CODE": "033001",
+      "CODE_NAME": "写人",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033002",
+      "CODE_NAME": "记事",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033003",
+      "CODE_NAME": "写景",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033004",
+      "CODE_NAME": "状物",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033005",
+      "CODE_NAME": "想象",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    },
+    {
+      "CODE": "033006",
+      "CODE_NAME": "应用",
+      "CODE_TYPE": "033",
+      "CODE_TYPE_NAME": "文体详细分类"
+    }
+  ]
+}

@@ -10,7 +10,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,82 +35,44 @@ import java.util.concurrent.TimeUnit;
 public class WebConfig  extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 
     private static Logger logger = LoggerFactory.getLogger(WebConfig.class);
-    @Value("${xcloud.uploadPath}")
-    private String uploadPath;
-    @Value("${xcloud.devSwitch}")
-    private String devSwitch;
+//    @Value("${xcloud.uploadPath}")
+//    private String uploadPath;
+//    @Value("${xcloud.devSwitch}")
+//    private String devSwitch;
 //    @Value("${spring.servlet.multipart.max-file-size}")
 //    private String maxFileSize;
 //    @Value("${spring.servlet.multipart.max-request-size}")
 //    private String maxRequestSize;
-    @Value("${spring.profiles.active}")
-    private String active;
+//    @Value("${spring.profiles.active}")
+//    private String active;
+
+    /**
+     * 配置静态访问资源
+     *
+     * @param registry
+     */
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").
+                addResourceLocations("/WEB-INF/views/");
+        super.addResourceHandlers(registry);
+    }
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         // 自定义注解 用于传参多个对象
         argumentResolvers.add(new MultiRequestBodyArgumentResolver());
-        // 自定义注解 用于crm工单后台登录后 获取当前登录者信息
-        argumentResolvers.add(currentUserMethodArgumentResolver());
+        // 自定义注解 用于后台登录后 获取当前登录者信息
+//        argumentResolvers.add(currentUserMethodArgumentResolver());
         super.addArgumentResolvers(argumentResolvers);
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //添加拦截器
-        // /apis/wechat
-        // /apis/crm
-        //token拦截器
-//        String[] excludes = new String[]{"/crm/users/login","/wechat_user/**","/resources/**"};
-//        registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/**").excludePathPatterns(excludes);
-    //签名拦截
-//        String[] permissionExclude = new String[]{"/static/*","/uploadFile/*","/crm/users/login","/error"};
-//        registry.addInterceptor(signatureInterceptor()).excludePathPatterns(permissionExclude).addPathPatterns("/app/**");
-        //权限拦截
-//        String[] permissionExclude = new String[]{"/static/*","/uploadFile/*","/crm/users/login","/error"};
-//        registry.addInterceptor(securityInterceptor()).excludePathPatterns(permissionExclude).addPathPatterns("/crm/**");
-//        if(!active.equals("dev")) {
-//            String[] crmExcludes = new String[]{"/crm/users/login"};
-//            registry.addInterceptor(sysCurrentUserInterceptor()).addPathPatterns("/crm/**").excludePathPatterns(crmExcludes);//后台crm拦截器判断用户是否登录
-//        }
         super.addInterceptors(registry);
     }
-    /**
-     * 修改springboot中默认的静态文件路径
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //addResourceHandler请求路径
-        //addResourceLocations 在项目中的资源路径
-        //setCacheControl 设置静态资源缓存时间
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/")
-                .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic());
-        //访问图片
-        try {
-            logger.info("开发环境开关状态:" + devSwitch);
-            File directory = null;// 参数为空
-            String url = null;//绝对路径
-            String fileUrl = null;//文件对外暴露的访问路径
-            if (devSwitch.equals("open")) {
-                directory = new File("D:");
-                String checkPath = directory.getCanonicalPath() + directory.separator + uploadPath + directory.separator;
-                checkFileExists(checkPath);
-                url = directory.getCanonicalPath() + "//" + uploadPath + "/" ;
-                fileUrl = "/" + uploadPath +  "/**";
-            } else {
-                directory = new File("");
-                url = directory.getCanonicalPath() + directory.separator + uploadPath + directory.separator;
-                checkFileExists(url);
-                fileUrl = directory.separator + uploadPath + directory.separator + "**";
-            }
-            logger.info("fileUrl:"+fileUrl+",url:"+url);
-            registry.addResourceHandler(fileUrl).addResourceLocations("file:"+url);
 
-        }catch (IOException e){
-            logger.info("创建访问图片路径异常："+e.getMessage());
-            e.printStackTrace();
-        }
-        super.addResourceHandlers(registry);
-    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -131,19 +96,15 @@ public class WebConfig  extends WebMvcConfigurerAdapter implements WebMvcConfigu
         return new CorsFilter(source);
     }
 
-    @Bean
-    public CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver() {
-        return new CurrentUserMethodArgumentResolver();
-    }
+//    @Bean
+//    public CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver() {
+//        return new CurrentUserMethodArgumentResolver();
+//    }
 
-    @Bean
-    public SysCurrentUserInterceptor  sysCurrentUserInterceptor(){
-        return new SysCurrentUserInterceptor();
-    }
-    @Bean
-    public SecurityInterceptor securityInterceptor() {
-        return new SecurityInterceptor();
-    }
+//    @Bean
+//    public SysCurrentUserInterceptor  sysCurrentUserInterceptor(){
+//        return new SysCurrentUserInterceptor();
+//    }
     //注入签名拦截器
     @Bean
     public SignatureInterceptor signatureInterceptor() {
@@ -176,5 +137,35 @@ public class WebConfig  extends WebMvcConfigurerAdapter implements WebMvcConfigu
             }
         }
         return true;
+    }
+
+    /**
+     * 添加对jsp支持
+     *
+     */
+    @Bean
+    public ViewResolver getJspViewResolver() {
+        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        internalResourceViewResolver.setPrefix("/WEB-INF/");//前缀
+        internalResourceViewResolver.setSuffix(".jsp");//后缀
+        internalResourceViewResolver.setOrder(0);//优先级
+        return internalResourceViewResolver;
+    }
+
+    /**
+     * 添加对Freemarker支持
+     *
+     */
+    @Bean
+    public FreeMarkerViewResolver getFreeMarkerViewResolver() {
+        FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver();
+        freeMarkerViewResolver.setCache(false);
+        freeMarkerViewResolver.setPrefix("/WEB-INF/");//前缀
+        freeMarkerViewResolver.setSuffix(".html");//后缀
+        freeMarkerViewResolver.setRequestContextAttribute("request");
+        freeMarkerViewResolver.setOrder(1);//优先级
+        freeMarkerViewResolver.setContentType("text/html;charset=UTF-8");
+        return freeMarkerViewResolver;
+
     }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jslib/home/home.js"></script>
+<link rel="stylesheet" href="jslib/home/jquery.mobile-1.4.5.css">
+<script type="text/javascript" src="console/js/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jslib/home/jquery.mobile-1.4.5.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=1.5,user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta name="MobileOptimized" content="320"/>
+<title>作文列表</title>
+<style type="text/css">
+.box{height: 100%;width: 100%;background-color: #ff80c0;margin-top: 2rem;position: relative;}
+.img{position: absolute;}
+.font{font-size: 0.9rem;color:#000000;font-weight:normal;word-wrap:break-word; word-break:normal; }
+.myli{cursor:pointer;}
+</style>
+</head>
+<body>
+<div data-role="header" >
+  <a href="#" class="ui-btn ui-btn-right ui-icon-arrow-d ui-btn-icon-left" id="appDownLoad">下载</a>
+  <h1>作文列表</h1>
+</div>
+
+<div data-role="main" class="ui-content">
+	<input type="search" id="condition" placeholder="搜索标题">
+
+    <div data-role="collapsibleset" data-filter="true" data-inset="true" id="myFilter" data-input="#filterCollapsibles">
+		<div data-role="collapsible" data-filtertext="Cities">
+	        <h3>高中</h3>
+	        <ul data-role="listview" data-inset="false" id="high">
+	        </ul>
+        </div>
+        <div data-role="collapsible" data-filtertext="Countries">
+	        <h3>初中</h3>
+	        <ul data-role="listview" data-inset="false" id="middle">
+	        </ul>
+        </div>
+        <div data-role="collapsible" data-filtertext="Days">
+        	<h3>小学</h3>
+            <ul data-role="listview" data-inset="false" id="primary">
+        	</ul> 
+        </div>
+	</div>
+</div>
+<div data-role="footer" data-position="fixed">
+	<h6>联系我们 010-88333186  service@pingdianedu.com</h6>
+	<h6>© 作文评点网 版权所有 www.pingdianedu.com</h6>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<jsp:include page="/inc.jsp"></jsp:include>
+<link href="jslib/jQuery.canvas.css" rel="stylesheet">
+<link href="jslib/font-awesome.min.css" rel="stylesheet">
+<script src="jslib/jQuery.canvas.js"></script>
+</head>
+<body>
+
+<img onclick="imgOpen()" src="http://123.56.186.12:8101/files/pingdianapp_img/composition/2018/3/1520770536652.jpg" style="width:100px;height:100px;">
+<img onclick="imgOpen()" src="http://123.56.186.12:8101/files/pingdianapp_img/composition/2018/4/1523153328349.jpg" style="width:100px;height:100px;">
+
+ 
+<img onclick="imgOpen()" src="http://123.56.186.12:8101/files/pingdianapp_img/composition/2018/1/1517214112425.jpg" style="width:100px;height:100px;">
+
+<!-- <canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas> -->
+<!-- 
+<img id="img1" class="myCanvas" src="http://123.56.186.12:8101/files/pingdianapp_img/composition/2018/1/1517214112425.jpg">
+   -->  	
+</body>
+<script type="text/javascript">
+var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+cxt.fillStyle="#FF0000";
+cxt.fillRect(0,0,150,75);
+
+/* var c=document.getElementById("myCanvas");
+var cxt=c.getContext("2d");
+var img=new Image()
+img.src="http://123.56.186.12:8101/files/pingdianapp_img/composition/2018/1/1517214112425.jpg"
+cxt.drawImage(img,0,0); */
+
+function imgOpen(){
+	var imgs = document.getElementsByTagName("img");
+	for(var i in imgs){
+        //imgs[i].index=i;
+        imgs[i].onclick=function(){
+        	var route = this.src;//图片路径
+			window.open('img_editing.html?'+route);
+			//window.open('NewFile4.html?'+route);
+        }
+    }
+}
+</script>
+</html>

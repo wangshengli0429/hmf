@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>编辑器</title>
+	<link href="styles/normalize.css" rel="stylesheet" type="text/css">
+	<link href="styles/layout.css" rel="stylesheet" type="text/css">
+	<link href="styles/print.css" rel="stylesheet" type="text/css" media="print">
+	<link rel="icon" href="images/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="images/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="images/icons/48.png" sizes="48x48" type="image/png">
+	<link rel="icon" href="images/icons/128.png" sizes="128x128" type="image/png">
+	<link rel="icon" href="images/icons/windows.ico" sizes="16x16,32x32,48x48" type="image/icon">
+	<script src="src/theme.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<script src="lib/jquery.min.js"></script>
+	<script src="src/app.js"></script>
+</head>
+<body>
+<div class="jspaint">
+	<div class="vertical">
+
+		<!-- 上部菜单 -->
+		<div class="menus" touch-action="none">
+			<div class="menu-container"><!-- File菜单 -->
+				<div class="menu-button file-menu-button" tabindex="-1">
+					<span class="menu-hotkey">F</span>ile
+				</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">N</span>ew</td>
+								<td class="menu-item-shortcut">Ctrl+N</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">O</span>pen</td>
+								<td class="menu-item-shortcut">Ctrl+O</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">S</span>ave</td>
+								<td class="menu-item-shortcut">Ctrl+S</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Save <span class="menu-hotkey">A</span>s</td>
+								<td class="menu-item-shortcut">Ctrl+Shift+S</td><td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td></tr>
+								<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">L</span>oad From URL</td>
+								<td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">U</span>pload To Imgur</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Manage Storage</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Print Pre<span class="menu-hotkey">v</span>iew</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Page Se<span class="menu-hotkey">t</span>up</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">P</span>rint</td>
+								<td class="menu-item-shortcut">Ctrl+P</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Set As <span class="menu-hotkey">W</span>allpaper (Tiled)</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Set As Wallpaper (<span class="menu-hotkey">C</span>entered)</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Recent File</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">E<span class="menu-hotkey">x</span>it</td>
+								<td class="menu-item-shortcut">Alt+F4</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- Edit菜单 -->
+				<div class="menu-button edit-menu-button" tabindex="-1"><span class="menu-hotkey">E</span>dit</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">U</span>ndo</td>
+								<td class="menu-item-shortcut">Ctrl+Z</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">R</span>epeat</td>
+								<td class="menu-item-shortcut">F4</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+							<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Cu<span class="menu-hotkey">t</span></td>
+								<td class="menu-item-shortcut">Ctrl+X</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">C</span>opy</td>
+								<td class="menu-item-shortcut">Ctrl+C</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">P</span>aste</td>
+								<td class="menu-item-shortcut">Ctrl+V</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">C<span class="menu-hotkey">l</span>ear Selection</td>
+								<td class="menu-item-shortcut">Del</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Select <span class="menu-hotkey">A</span>ll</td>
+								<td class="menu-item-shortcut">Ctrl+A</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">C<span class="menu-hotkey">o</span>py To...</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label">Paste <span class="menu-hotkey">F</span>rom...</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- View菜单 -->
+				<div class="menu-button view-menu-button" tabindex="-1"><span class="menu-hotkey">V</span>iew</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area">✓</td>
+								<td class="menu-item-label"><span class="menu-hotkey">T</span>ool Box</td>
+								<td class="menu-item-shortcut">Ctrl+T</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area">✓</td>
+								<td class="menu-item-label"><span class="menu-hotkey">C</span>olor Box</td>
+								<td class="menu-item-shortcut">Ctrl+L</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area">✓</td>
+								<td class="menu-item-label"><span class="menu-hotkey">S</span>tatus Bar</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area">✓</td>
+								<td class="menu-item-label">T<span class="menu-hotkey">e</span>xt Toolbar</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area">✓</td>
+								<td class="menu-item-label">E<span class="menu-hotkey">x</span>tras Menu</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row">
+								<td colspan="4"><hr class="menu-hr"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">Z</span>oom</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" style="fill:currentColor;display:inline-block;vertical-align:middle"><path d="M7.5 4.33L0 8.66L0 0z"></path></svg></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">V</span>iew Bitmap</td>
+								<td class="menu-item-shortcut">Ctrl+F</td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- Image菜单 -->
+				<div class="menu-button image-menu-button" tabindex="-1"><span class="menu-hotkey">I</span>mage</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">F</span>lip/Rotate</td>
+							<td class="menu-item-shortcut">Ctrl+R</td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">S</span>tretch/Skew</td>
+							<td class="menu-item-shortcut">Ctrl+W</td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">I</span>nvert Colors</td>
+							<td class="menu-item-shortcut">Ctrl+I</td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">A</span>ttributes...</td>
+							<td class="menu-item-shortcut">Ctrl+E</td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">C</span>lear Image</td>
+							<td class="menu-item-shortcut">Ctrl+Shift+N</td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area">✓</td>
+							<td class="menu-item-label"><span class="menu-hotkey">D</span>raw Opaque</td>
+							<td class="menu-item-shortcut"></td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- Colors菜单 -->
+				<div class="menu-button colors-menu-button" tabindex="-1"><span class="menu-hotkey">C</span>olors</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">E</span>dit Colors...</td>
+								<td class="menu-item-shortcut"></td><td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">G</span>et Colors</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">S</span>ave Colors</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- Help菜单 -->
+				<div class="menu-button help-menu-button" tabindex="-1"><span class="menu-hotkey">H</span>elp</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">H</span>elp Topics</td>
+							<td class="menu-item-shortcut"></td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						<tr class="menu-row">
+							<td colspan="4"><hr class="menu-hr"></td>
+						</tr>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label"><span class="menu-hotkey">A</span>bout Paint</td>
+							<td class="menu-item-shortcut"></td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div class="menu-container"><!-- Extras -->
+				<div class="menu-button extras-menu-button" style="display: none;" tabindex="-1">E<span class="menu-hotkey">x</span>tras</div>
+				<div class="menu-popup" style="display: none;">
+					<table class="menu-popup-table">
+						<tbody>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">R</span>ender History As GIF</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">M</span>ulti-User</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" style="fill:currentColor;display:inline-block;vertical-align:middle"><path d="M7.5 4.33L0 8.66L0 0z"></path></svg></td>
+							</tr>
+							<tr class="menu-row menu-item" tabindex="-1">
+								<td class="menu-item-checkbox-area"></td>
+								<td class="menu-item-label"><span class="menu-hotkey">T</span>hemes</td>
+								<td class="menu-item-shortcut"></td>
+								<td class="menu-item-submenu-area"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" style="fill:currentColor;display:inline-block;vertical-align:middle"><path d="M7.5 4.33L0 8.66L0 0z"></path></svg></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	
+			<div class="menu-container"><!-- 批注 -->
+				<div class="menu-button 批注-menu-button" tabindex="-1">批注</div>
+				<div class="menu-popup" style="display: none;">
+				<table class="menu-popup-table">
+					<tbody>
+						<tr class="menu-row menu-item" tabindex="-1"><td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label">批注</td>
+							<td class="menu-item-shortcut"></td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+			<div class="menu-container"><!-- 保存 -->
+				<div class="menu-button 保存-menu-button" tabindex="-1">保存</div>
+				<div class="menu-popup" style="display: none;">
+				<table class="menu-popup-table">
+					<tbody>
+						<tr class="menu-row menu-item" tabindex="-1">
+							<td class="menu-item-checkbox-area"></td>
+							<td class="menu-item-label">保存</td>
+							<td class="menu-item-shortcut"></td>
+							<td class="menu-item-submenu-area"></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="component-area"></div>
+
+		<!-- 中间部分 -->
+		<div class="horizontal">
+			<!-- 左边工具栏 -->
+			<div class="component-area">
+				<div class="component Tools-component" touch-action="none">
+					<div class="tools">
+						<div class="tool" title="Free-Form Select">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px 0px;"></span>
+						</div>
+						<div class="tool" title="Select">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px 0px;"></span>
+						</div>
+						<div class="tool" title="Eraser/Color Eraser">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -25px;"></span>
+						</div>
+						<div class="tool" title="Fill With Color">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -25px;"></span>
+						</div>
+						<div class="tool" title="Pick Color">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -50px;"></span>
+						</div>
+						<div class="tool" title="Magnifier">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -50px;"></span>
+						</div>
+						<div class="tool selected" title="Pencil">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -75px;"></span>
+						</div>
+						<div class="tool" title="Brush">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -75px;"></span>
+						</div>
+						<div class="tool" title="Airbrush">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -100px;"></span>
+						</div>
+						<div class="tool" title="Text">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -100px;"></span>
+						</div>
+						<div class="tool" title="Line">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -125px;"></span>
+						</div>
+						<div class="tool" title="Curve">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -125px;"></span>
+						</div>
+						<div class="tool" title="Rectangle">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -150px;"></span>
+						</div>
+						<div class="tool" title="Polygon">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -150px;"></span>
+						</div>
+						<div class="tool" title="Ellipse">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 0px -175px;"></span>
+						</div>
+						<div class="tool" title="Rounded Rectangle">
+							<span style="display: block; position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; background-image: url(&quot;images/toolbar-icons.png&quot;); background-position: 24px -175px;"></span>
+						</div>
+					</div>
+					<div class="tool-options"></div>
+				</div>
+			</div>
+
+			<!-- canvas画布 -->
+			<div class="canvas-area" touch-action="pan-x pan-y">
+				<canvas id="mycanvas" touch-action="none" style="cursor: url(&quot;images/cursors/pencil.png&quot;) 13 23, crosshair; max-width: 700px; max-height: 930px; width: 963px; height: 1280px;" width="963" height="1280"></canvas>
+				<div class="canvas-area2"></div>
+				<div class="handle useless-handle" touch-action="none" style="left: 702.5px; top: 0px;"></div>
+				<div class="handle useless-handle" touch-action="none" style="left: 352.5px; top: 0px;"></div>
+				<div class="handle useless-handle" touch-action="none" style="left: 0px; top: 0px;"></div>
+				<div class="handle useless-handle" touch-action="none" style="left: 0px; top: 467.5px;"></div>
+				<div class="handle useless-handle" touch-action="none" style="left: 0px; top: 932.5px;"></div>
+				<div class="handle" touch-action="none" style="cursor: url(&quot;images/cursors/ns-resize.png&quot;) 16 16, s-resize; left: 352.5px; top: 932.5px;"></div>
+				<div class="handle" touch-action="none" style="cursor: url(&quot;images/cursors/nwse-resize.png&quot;) 16 16, se-resize; left: 702.5px; top: 932.5px;"></div>
+				<div class="handle" touch-action="none" style="cursor: url(&quot;images/cursors/ew-resize.png&quot;) 16 16, e-resize; left: 702.5px; top: 467.5px;"></div>
+			</div>
+
+			<!--  -->
+			<div class="component-area"></div>
+		</div>
+
+		<!-- 颜色  -->
+		<div class="component-area">
+			<div class="component Colors-component" touch-action="none" style="position: relative; left: 3px;">
+				<div class="color-box">
+					<div class="swatch current-colors" style="position: relative;">
+						<canvas style="pointer-events: none;" width="28" height="29"></canvas>
+						<div class="swatch color-selection" style="position: absolute; right: 3px; bottom: 3px;">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+						</div>
+						<div class="swatch color-selection" style="position: absolute; left: 2px; top: 4px;">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+						</div>
+					</div>
+					<div class="palette" style="width: 224px;">
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+						<div class="swatch color-button">
+							<canvas style="pointer-events: none;" width="13" height="13"></canvas>
+							<input style="opacity: 0;" type="color">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 底部 -->
+		<div class="status-area">
+			<div class="status-text">For Help, click Help Topics on the Help Menu.</div>
+			<div class="status-coordinates"></div><!-- 坐标 -->
+			<div class="status-coordinates"></div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="window component-window" touch-action="none" style="position: absolute; z-index: 5; display: none; left: 0px; top: 0px;">
+	<div class="window-titlebar" touch-action="none">
+		<span class="window-title">Tools</span>
+		<button class="window-close-button"></button>
+	</div>
+	<div class="window-content vertical"></div>
+</div>
+<div class="window component-window" touch-action="none" style="position: absolute; z-index: 6; display: none; left: 0px; top: 0px;">
+	<div class="window-titlebar" touch-action="none">
+		<span class="window-title">Colors</span>
+		<button class="window-close-button"></button>
+	</div>
+	<div class="window-content horizontal"></div>
+</div>
+
+<div class="menu-popup" style="display: none;">
+<table class="menu-popup-table">
+	<tbody>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label"><span class="menu-hotkey">N</span>ormal Size</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label"><span class="menu-hotkey">L</span>arge Size</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label">C<span class="menu-hotkey">u</span>stom...</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+		<tr class="menu-row">
+			<td colspan="4"><hr class="menu-hr"></td>
+		</tr>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area">✓</td>
+			<td class="menu-item-label">Show <span class="menu-hotkey">G</span>rid</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area">✓</td>
+			<td class="menu-item-label">Show T<span class="menu-hotkey">h</span>umbnail</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="menu-popup" style="display: none;">
+<table class="menu-popup-table">
+	<tbody>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label"><span class="menu-hotkey">N</span>ew Session From Document</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+			<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label">New <span class="menu-hotkey">B</span>lank Session</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="menu-popup" style="display: none;">
+<table class="menu-popup-table">
+	<tbody>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label"><span class="menu-hotkey">C</span>lassic</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+		<tr class="menu-row menu-item" tabindex="-1">
+			<td class="menu-item-checkbox-area"></td>
+			<td class="menu-item-label"><span class="menu-hotkey">M</span>odern (WIP)</td>
+			<td class="menu-item-shortcut"></td>
+			<td class="menu-item-submenu-area"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+</body>
+</html>

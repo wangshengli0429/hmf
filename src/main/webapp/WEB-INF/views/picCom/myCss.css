@@ -1,0 +1,158 @@
+.mainleft{
+	float: left;
+	width: 150px;
+	height: 100%;
+	padding-top: 40px;
+}
+.mainright{
+	overflow: hidden;
+}
+.mycanvas{
+	float: left;
+	width: 700px;
+	min-height: 40rem;
+	height: auto;
+}
+.canvas{
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border:1px solid #c0c0c0;
+}
+.mymessage{
+	overflow: hidden;
+	height: auto;
+	border:1px solid #c0c0c0;
+}
+.messageshow{
+	height: 400px;
+	top: 200px;
+	left:850px;
+	position: absolute;
+	display: none;
+}
+.messagetoollist{
+	float: right;
+	margin-top: 5px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.messagetool{
+	width:40px;
+	height:40px;
+	background-color:#1a9cff;
+	border-radius:5px;
+	display: inline-block;
+	text-align:center;
+    line-height:40px;
+}
+
+.toolFont{
+	width:40px;
+	height:40px;
+	background-color:#6d6d6d;
+	border-radius:5px;
+	color: white;
+	text-align:center;
+    line-height:40px;
+}
+.mtop10{
+	margin-top:10px;
+}
+.mtop40{
+	margin-top:40px;
+}
+.mleft41{
+	margin-left: 41px;
+}
+.mleft42{
+	margin-left: 42px;
+}
+.mleft2{
+	margin-left: 2px;
+}
+.pleft40{
+	padding-left: 40px;
+}
+.ptop10{
+	padding-top: 10px;
+}
+.floatleft{
+	float:left;
+	
+}
+.backgroundblue{
+	background-color:#1a9cff;
+}
+.backgroundred{
+	background-color:#ff545f;
+}
+.backgroundgreen{
+	background-color:#0ac976;
+}
+.backgroundgray{
+	background-color:#6d6d6d;
+}
+.tool{
+	width:40px;
+	height:40px;
+	border-radius:5px;
+}
+.toolthin{
+	width:8px;
+	height:8px;
+	border-radius:50%;
+	background-color:#ffffff;
+	margin: 0 auto;
+	margin-top:14px;
+}
+.toolimg{
+	width:35px;
+	height: 35px;
+}
+.toolthick1{
+	idth:8px;
+	height:16px;
+}
+.toolthick2{
+	width:12px;
+	height:12px;
+	border-radius:50%;
+	background-color:#ffffff;
+	margin: 0 auto;
+	margin-bottom: 16px;
+}
+.cursorp{
+	cursor: pointer;
+}
+.nopointer{
+	pointer-events: none; 
+}
+.xian{
+	height:1px;
+	width:100%;
+	background-color:#b4b4b4;
+	margin-top:0.5625rem;
+	margin-bottom:0.5625rem;
+}
+.mytextarea{
+	border-style: solid;
+	border-color: red;
+	width: 100%;
+	height: 20px;
+	display: block;
+	padding-top: 5px;
+	margin-top: 5px;
+	resize: none;
+}
+.mya{
+	text-wrap:normal;
+	display: block;
+	cursor: pointer;
+}
+.messagehead{
+	font-size: 20px;
+}
+
+
+
+

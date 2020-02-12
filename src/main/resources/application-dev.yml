@@ -15,7 +15,7 @@ spring:
 #单个数据源
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.237.70:3306/hmf?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://140.143.237.70:3306/pingdian?characterEncoding=utf-8&generateSimpleParameterMetadata=true
     username: root
     password: Wang1234
  ##################以下为druid增加的配置###########################
@@ -53,14 +53,17 @@ spring:
 # Mybatis 配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.edianzu.web.entity
+  type-aliases-package: com.hmf.web.entity
 #SQL打印日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 # 配置端口
 server:
   port: 8080
+  tomcat:
+      uri-encoding: UTF-8
   servlet:
+    context-path: /pingdian
     session:
       timeout: 1800s
 #日志配置
@@ -77,11 +80,11 @@ submail:
 
 #文件上传地址
 xcloud:
-  uploadPath: uploadFile
-  #开发环境开关 close 关闭 open 打开
-  devSwitch: open
-  #报修工单数量限制
-  caseSize: 3
+    uploadPath: uploadFile
+    #开发环境开关 close 关闭 open 打开
+    devSwitch: open
+    #报修工单数量限制
+    caseSize: 3
 
 ##项目域名访问
 project:

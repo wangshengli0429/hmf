@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <style>
+    * { margin: 0; padding: 0;}
+    #my-canvas { border: 1px solid red; }
+    .active {background-color: #e61;color: #fff}
+</style>
+</head>
+<body>
+<canvas id="my-canvas" width="500" height="500"></canvas>
+<div>
+    <span>画笔颜色：</span><input type="color" id="line-color" />
+ 
+    <span>画笔宽度：</span><input type="range" id="line-width" max="10" />
+ 
+    <span>橡皮擦：</span><input type="button"  id="e" value="橡皮擦" />
+ 
+ 
+    <span>画笔的透明度：</span><input type="range" id="opacity" max="10" />
+</div>
+<script>
+ 
+ 
+ 
+    /*颜色*/
+    var oLineColor = document.getElementById("line-color");
+    /*宽度*/
+    var oLineWidth = document.getElementById("line-width");
+ 
+    /*橡皮擦*/
+    var oE = document.getElementById("e");
+ 
+    /*透明度*/
+    var oOpacity = document.getElementById("opacity");
+ 
+ 
+    var oCanvas = document.getElementById("my-canvas");
+ 
+    var context = oCanvas.getContext("2d");
+ 
+    //事件加给canvas
+ 
+    oCanvas.onmousedown=function (ev) {
+        //每次 画之前。应该开启新的路径
+        context.beginPath();
+        //先确认颜色
+        context.strokeStyle = oLineColor.value;
+        //确认线条宽度
+        context.lineWidth = oLineWidth.value;
+ 
+        /*透明度 oOpacity.value (1~10)/10=(0.1~1)*/
+        context.globalAlpha = oOpacity.value/10;
+ 
+        /*判断用不用橡皮擦*/
+        if(oE.className=="active"){
+            context.strokeStyle = "#fff"
+        }
+ 
+        //鼠标按下的位置
+        var oldX = ev.offsetX;
+        var oldY = ev.offsetY;
+        //让画笔移到鼠标按下的位置
+        context.moveTo(oldX,oldY);
+ 
+        document.onmousemove=function (ev) {
+            //鼠标所在的位置
+            //ev.offsetX
+            //ev.offsetY
+            context.lineTo(ev.offsetX,ev.offsetY);
+            context.stroke();
+             
+        };
+ 
+        document.onmouseup=function () {
+            console.log("onmouseup");
+            document.onmousemove=null;
+            document.onmouseup =null;
+        }
+ 
+    };
+ 
+ 
+    /*橡皮擦*/
+    oE.onclick=function () {
+        if(this.className=="active"){
+            this.className=""
+        }else {
+            this.className="active"
+        }
+ 
+        //this.className=this.className=="active"?"":"active"
+ 
+    }
+ 
+ 
+    //1、橡皮擦的问题
+    //2、 透明度
+ 
+ 
+</script>
+</body>
+</html>

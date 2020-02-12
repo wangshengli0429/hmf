@@ -1,0 +1,98 @@
+@CHARSET "UTF-8";
+
+body{
+	font-family:Microsoft YaHei;
+	margin:0px;
+	width:100%;
+	height:100%;
+}
+
+.content1 {
+	margin: 0 auto;
+	max-width: 750px;
+}
+
+.title_text {
+	font-size: 1.5rem;
+	text-align: center;
+  	vertical-align: middle;
+  	margin-top: 1.2rem;
+  	margin-bottom: 3rem;
+}
+
+.text_css {
+	width: 7rem;
+	max-width:30rem;
+	border:none;
+	outline:medium;
+	font-size: 1rem;
+}
+
+.phone {
+	display: inline;
+	font-size: 1rem;
+	
+}
+.phone_text {
+	display: inline;
+	font-size: 1rem;
+	margin-left: 1.5rem;
+}
+
+.verification {
+	display: inline;
+	font-size: 1rem;
+	margin-left: 0.6rem;
+}
+
+.pwd {
+	display: inline;
+	font-size: 1rem;
+	
+}
+.pwd_text {
+	display: inline;
+	font-size: 1rem;
+	margin-left: 1.5rem;
+}
+.invisible {
+	display: inline;
+	width: 30px;
+	height: 30px;
+}
+.icon1{
+	width: 1.7rem;
+	height: 1.7rem;
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+  color:#f0f0f0;
+}
+
+.but_div {
+	color: #2797f1;
+	font-size: 1rem;
+	float: right;
+}
+
+.sub_but {
+	width: 100%;
+	height: 3rem;
+	color: #fff;
+	font-size: 1.2rem;
+	/* letter-spacing: 0.6rem; */
+	background-color: #2797f1;
+	text-align: center;
+  	vertical-align: middle;
+  	line-height: 3rem;
+	border-radius: 0.5rem;
+	margin-top: 5rem;
+}
+.prompt_span {
+	color: red;
+	font-size: 1rem;
+	float: right;
+}

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=1.5,user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta name="MobileOptimized" content="320"/>
+<title>作文详情</title>
+<style>
+@charset "utf-8";
+/* CSS Document */
+html {background:#fff;}
+body {font:12px/1.4 arial,helvetica,sans-serif;}
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,textarea,select,button,th,td{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+table {font-size:inherit;font:100%;}
+input,select {font:arial,helvetica,clean,sans-serif;;}
+button {overflow:visible}
+th,em,address,cite {font-style:normal;font-weight:normal;}
+li{list-style:none;}
+img,fieldset {border:0;}
+ins {text-decoration:none;}
+.xieyi{ padding: 10px 1rem; height: auto; overflow: hidden; font-size: 14px; line-height: 1.65rem; }
+.xieyi h3{ text-align: center; font-size: 18px; font-weight: bold; }
+a, a:visited {color: #9EB4CA;text-decoration: none;}
+h1, h2, h3, footer, .gallery {text-align: center;}
+pre {width: 340px;margin: 0 auto;border: dashed 1px #aaa;margin-bottom: 10px;}
+@media (max-width: 480px) {pre {max-width: 98%;}}
+header, footer {display: block;padding: .2em 0;background-color: #555;box-shadow: 0 0 8px #222;}
+footer {margin-top: 1.5em;}
+.content {max-width: 1160px;margin: 0 auto;}
+.gallery:after {content: '';display: block;height: 2px;margin: .5em 0 1.4em;background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(77,77,77,1) 50%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(77,77,77,1) 50%, rgba(0, 0, 0, 0) 100%);
+}
+.gallery img {height: 100%;}
+.gallery a {width: 240px;height: 180px;display: inline-block;overflow: hidden;margin: 4px 6px;box-shadow: 0 0 4px -1px #000;
+}
+.ribbon > img {position: absolute;top: 0;right: 0;border: 0;}
+@media (max-width: 768px) {.sm-hidden {display: none;}}
+.hljs-comment,.hljs-quote{color:#969896}.hljs-deletion,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#c66}.hljs-tag {color: #f8f8f2}.hljs-built_in,.hljs-builtin-name,.hljs-link,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#de935f}.hljs-attr{color:#f0c674}.hljs-addition,.hljs-bullet,.hljs-string,.hljs-symbol{color:#b5bd68}.hljs-section,.hljs-title{color:#81a2be}.hljs-keyword,.hljs-selector-tag{color:#b294bb}.hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.8em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+</style>
+<!-- <link rel="stylesheet" href="jslib/share/jquery.mobile-1.4.5.css"> -->
+<link rel="stylesheet" href="jslib/share/share.css">
+<link rel="stylesheet" href="jslib/share/baguetteBox.css">
+<script type="text/javascript" src="jslib/voice/voice-2.0.js"></script>
+<script type="text/javascript" src="jslib/voice/Gruntfile.js"></script>
+<script type="text/javascript" src="jslib/voice/pcmdata.min.js"></script>
+<script type="text/javascript" src="jslib/voice/libamr-min.js"></script>
+<script type="text/javascript" src="jslib/voice/swfobject.js"></script>
+<script type="text/javascript" src="jslib/share/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="jslib/share/share.js"></script>
+<script type="text/javascript" src="jslib/share/highlight.min.js"></script>
+<script type="text/javascript" src="jslib/share/baguetteBox.js"></script>
+<!-- <script type="text/javascript" src="jslib/share/jquery.mobile-1.4.5.js"></script> -->
+</head>
+<body style="font-family:Microsoft YaHei;color:#000000;background-color:#ffffff;">
+<div class="ui-header">
+  <div class="ui-btnleft" id="compositionlist" style="font-size: 0.8rem;color: black;;font-weight: bolder;">
+	<div style="background:url(images/home-white.png);background-size:cover;background-repeat:no-repeat;background-position:50% 50%;width:1.4rem;height:1.4rem;float: left ;margin: 0.1rem"></div>
+    <div style="overflow:hidden;margin-top: 0.22rem">作文列表</div>
+  </div>
+  <h1 class="ui-title">作文详情</h1>
+  <div class="ui-btnright" id="nextCom" style="font-size: 0.8rem;color: black;;font-weight: bolder;">
+	<div style="background:url(images/carat-r-white.png);background-size:cover;background-repeat:no-repeat;background-position:50% 50%;width:1.3rem;height:1.3rem;float: left ;margin: 0.1rem"></div>
+    <div style="overflow:hidden;margin-top: 0.22rem">下一篇</div>
+  </div>
+</div>
+<div class="content_padding">
+	<div id="propoDiv1" class="div_propo">
+		<p id="propo1" class="p_propo"></p>
+	</div>
+	<div id="propoDiv2" class="div_propo">
+		<p id="propo2" class="p_propo"></p>
+	</div>
+	
+	<div class="div_score">
+        <span class="span_score"><b id="score"></b></span>
+        <div>
+			<img src="images/xiaxian.png" style="width:3rem;"/>
+		</div>
+	</div>
+	<div style="display:inline;">
+		<center>
+			<p class="font_35" id="titleid"></p>
+			<p class="font_25">
+				<span id="author"></span>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span id="draft"></span>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span id="grade"></span>
+			</p>
+		</center>
+	</div>
+	
+	<div class="content_line">
+		<div id="content"></div>
+		<div class="div_img" id="imgDiv">
+			<!-- <div id="imga" style="display:inline;" class="baguetteBoxOne">
+		    	<a href='1.jpg' id="a1" data-caption="一堂作文课" onclick="imgclick(1)"><img id="i1" src="" style="width:5rem;height:5rem;"></a>
+		    </div>
+		    <div id="imgb" style="display:inline;padding:0.5rem;" class="baguetteBoxOne">
+		    	<a href='1.jpg' id="a2" data-caption="一堂作文课"><img id="i2" src="" style="width:5rem;height:5rem;"></a>
+		    </div>
+		    <div id="imgc" style="display:inline;" class="baguetteBoxOne">
+		    	<a href='1.jpg' id="a3" data-caption="一堂作文课"><img id="i3" src="" style="width:5rem;height:5rem;"></a>
+			</div> -->
+			<div id="imga" style="display:inline;">
+		    	<a href=#' id="a1" class="imglocation"><img id="i1" src="" style="width:5rem;height:5rem;"></a>
+		    </div>
+		    <div id="imgb" style="display:inline;padding:0.5rem;">
+		    	<a href='#' id="a2" class="imglocation"><img id="i2" src="" style="width:5rem;height:5rem;"></a>
+		    </div>
+		    <div id="imgc" style="display:inline;">
+		    	<a href='#' id="a3" class="imglocation"><img id="i3" src="" style="width:5rem;height:5rem;"></a>
+			</div>
+		</div>
+		<!-- // 查看图片 // -->
+		<!-- <div id="divCenter1" onclick="picClose()" style="display: none; position: absolute; top: 20%; left: 20%; width: 60%; padding: 0px; border: 0px solid orange; background-color: white; z-index:1002; overflow: auto;">
+	        <img id="img1" src="" style="width:100%;height:100%;"/>
+	    </div>
+	    <div id="divCenter2" onclick="picClose()" style="display: none; position: absolute; top: 20%; left: 20%; width: 60%; padding: 0px; border: 0px solid orange; background-color: white; z-index:1002; overflow: auto;">
+	        <img id="img2" src="" style="width:100%;height:100%;"/>
+	    </div>
+	    <div id="divCenter3" onclick="picClose()" style="display: none; position: absolute; top: 20%; left: 20%; width: 60%; padding: 0px; border: 0px solid orange; background-color: white; z-index:1002; overflow: auto;">
+	        <img id="img3" src="" style="width:100%;height:100%;"/>
+	    </div>
+	    
+		<div class="div_img" style="display:block;">
+			<p class="span_date2" id="createTime"></p>
+		</div> -->
+	</div>
+</div>
+
+<div class="div_xian4"></div>
+	
+<div class="div_dp">
+	<span style="font-size:1rem;color:#ff8000;border:1px solid #ff8000;background:#ff8000;">|</span>
+	<span class="span_dp">名师点评</span>
+	<!-- <hr style="height:1px;border:none;border-top:1px solid #b4b4b4;"/> -->
+	<div class="div_xian1"></div>
+</div>
+<div class="content_padding">	
+	<div class="div_teacher">
+		<table style="width:100%;">
+			<tr>
+				<td class="td_teacher">
+					<div class="img_teacher" id="headid" style="background:url();"></div>
+				</td>
+				<td>
+					<span class="span_teacher" id="teaName"></span>
+				</td>
+				<td>
+					<span class="span_date2" id="comTime"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>	
+	
+<div class="div_xian3"></div> 
+
+<div id="writtenDiv" style="display:none;">
+	<div class="content_padding">
+		<div>
+			<img src="images/comp_score_icon.png" style="width:1.5rem">
+			<span class="span_bt">作文评分</span>
+		</div>
+	</div>
+	<div class="div_xian"></div>
+	<div id="pfbz1" style="display:none;">
+		<table cellspacing="15px">
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">内容</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="content_ca1"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="content1" ></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">语言</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="language_ca1"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="language1"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">书写</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="writing_ca1"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="writing1"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="pfbz2" style="display:none;">
+		<table cellspacing="15px">
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">内容</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="content_ca2"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="content2"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">语言</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="language_ca2"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="language2"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">结构</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="structure_ca2"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="structure2"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">书写</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="writing_ca2"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="writing2"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="pfbz3" style="display:none;">
+		<table cellspacing="15px">
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">内容</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="content_ca3"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="content3"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">表达</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="language_ca3"></span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="language3"></span>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<span class="span_size2" style="white-space:nowrap;">特征</span>
+				</td>
+				<td valign="top" style="white-space:nowrap;">
+					&nbsp;<span class="span_dj" id="structure_ca3">;</span>&nbsp;
+				</td>
+				<td valign="top">
+					<span class="span_size2" id="structure3"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="div_xian3"></div>
+	
+	<div class="content_padding">
+		<div>
+			<img src="images/comp_comment_icon.png" style="width:1.5rem">
+			<span class="span_bt">点评详情</span>
+		</div>
+	</div>
+	<div class="div_xian"></div>
+	<div class="content_padding">
+		<div>
+			<span class="span_size">得分点：</span>
+			<p class="p_size" id="scoring"></p>
+			<div class="div_xian"></div>
+			<span class="span_size">失分点：</span>
+			<p class="p_size" id="points"></p>
+			<div class="div_xian"></div>
+			<span class="span_size">建议：</span>
+			<p class="p_size" id="suggest"></p>
+		</div>
+	</div>
+</div>
+
+<div id="voiceDiv" style="display:none;">
+<div class="content_padding">
+	<div style="font-size:14px;line-height:35px;background-color:#ffffff;border:0;margin-top:0px;" id="voiceDiv">
+		<div>
+			<input type="button" style="background:#54a7fd;color:#ffffff;width:2px;">
+			<span class="span_bt">语音评点</span>
+			<div class="div_xian1"></div>
+		</div>
+		<input type="hidden" value="" id="voiceData">
+		<img src="images/voiceOpen.jpg" style="float:left;width:2rem;" id="voiceOpenButton" onclick="voiceOpen()">
+		<img src="images/voiceClose.jpg" style="float:left;width:2rem;" id="voiceCloseButton" onclick="voiceClose()"><br>
+	</div>
+</div>
+<div class="div_xian2"></div>
+<div class="content_padding">
+	<div>
+		<input type="button" style="background:#54a7fd;color:#ffffff;width:2px;">
+		<span class="span_bt">评点建议</span>
+		<div class="div_xian1"></div>
+		<p class="p_size" id="suggest2"></p>
+	</div>
+</div>
+</div>
+
+<div class="div_xian3"></div>
+	
+<div class="content_padding">
+	<div class="div_dj">
+		<span class="dj">作文等级：</span>
+		<span class="dj2" id="grading"></span>
+	</div>
+</div>
+
+<div id="appraise" style="display:block;">
+<div class="div_xian3"></div>
+
+<div id="evaluate" class="evaluate_css">
+	<span style="font-size:1rem;color:#ff8000;border:1px solid #ff8000;background:#ff8000;">|</span>
+	<span class="span_dp">学生评价</span>
+	<div class="div_xian1"></div>
+	<div class="content_padding">
+		<center>
+			<table>
+				<tr>
+					<td colspan="5" align="center" style="padding-top:1.5rem;">
+						<input type="radio" value="1" name="satis" class="radio_s">
+						<span class="span_dp">非常满意</span>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" value="2" name="satis" class="radio_s">
+						<span class="span_dp">满意</span>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" value="3" name="satis" class="radio_s">
+						<span class="span_dp">不满意</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<div class="div_xian"></div>
+					</td>
+				</tr>
+				<tr style="vertical-align:middle;text-align:center;">
+					<td rowspan="2">
+						<p class="ave_span" id="ave"></p><p class="span_dp1">综合评分</p>
+					</td>
+					<td>
+						<p class="span_dp">负责态度：</p>
+					</td>
+					<td>
+						<p id="attits"></p>
+					</td>
+					<td>
+						<p id="attit" class="span_dp" style="margin-left:0.4rem;"></p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="span_dp">专业水平：</p>
+					</td>
+					<td>
+						<p id="profes"></p>
+					</td>
+					<td>
+						<p id="profe" class="span_dp" style="margin-left:0.4rem;"></p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<div class="div_xian" style="margin-bottom:1rem;"></div>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+</div>
+
+<!-- <div class="content_padding">
+	<div id="message" class="message_css">
+		<table style="width:100%;padding-bottom:0.5rem;">
+			<tr>
+				<td class="td_teacher">
+					<div class="img_teacher" id="stuheadid" style="background:url();"></div>
+					
+					<div class="img_teacher" style="background:url(http://123.56.186.12:8101/files/pingdianapp_img/Upload/2017/11/1510657786508.jpg);background-size:cover;background-position:50% 50%;background-repeat:no-repeat;"></div>
+					
+				</td>
+				<td style="padding-left:0.5rem;">
+					<span class="span_dp">学生留言</span><br>
+					<span id="stuTime" style="font-size:0.9rem;color:#b4b4b4;margin-left:0.3rem;"></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" id="stuMessage1" class="span_message">
+					<span></span>
+				</td>
+			</tr>
+			<tbody id="tableid">
+			
+			</tbody>
+		</table>
+	</div> -->
+	<!-- 
+	<div class="top">
+		<div></div>
+		<div>
+			<div class="top_triangle"></div>
+			<span>hello, man! gdgbfghfgb thfgb三个人大润发根本性的任何烦恼的人套近乎的人影呢问题还都后触发过年年社团活动让你的是添加红豆奶茶摄影好点吧</span><span> hello, man! gdgbfghfgb thfgb</span>
+			<span>hello, man! gdgbfghfgb thfgb三个人大润发根本性的任何烦恼的人套近乎的人影呢问题还都后触发过年年社团活动让你的是添加红豆奶茶摄影好点吧</span><span> hello, man! gdgbfghfgb thfgb</span>
+			<span>hello, man! gdgbfghfgb thfgb三个人大润发根本性的任何烦恼的人套近乎的人影呢问题还都后触发过年年社团活动让你的是添加红豆奶茶摄影好点吧</span><span> hello, man! gdgbfghfgb thfgb</span>
+			<span>hello, man! gdgbfghfgb thfgb三个人大润发根本性的任何烦恼的人套近乎的人影呢问题还都后触发过年年社团活动让你的是添加红豆奶茶摄影好点吧</span><span> hello, man! gdgbfghfgb thfgb</span>
+		</div>
+	</div>
+	 -->
+	 
+	 <!-- 评价内容 --> 
+	
+
+	<div id="showMessage">
+	<!-- --------------------------- -->
+		<!-- <div class="div_xian"></div>
+		<div class="pjmain">
+			<div class="pjleft">
+				<div class="img_student" style="background:url(http://123.56.186.12:8101/files/pingdianapp_img/Upload/2017/11/1510657786508.jpg);background-size:cover;background-position:50% 50%;background-repeat:no-repeat;"></div>
+				<br>
+				<div class="namefont">asdasd</div>
+			</div>
+			<div class="pjright">
+				<div class="pjrighttop">		
+						<a class="messagefont">洒所所所所所是是是试试撒所所所所所所所所所所所所所所</a>
+				</div>
+				<div class="pjrightmiddle">
+					<div class="pjfloatright">
+						<a class="messagefont">留言时间：</a>
+						<a class="timefont">2018-03-01 16:35</a>
+						<a onclick="showMessage(100)" class="showmessage" id="showMessage100" href="javascript:void(0)" style="font-size: 0.9rem">查看回复</a>
+						<a onclick="hideMessage(100)" class="hidemessage" id="hideMessage100" href="javascript:void(0)" style="font-size: 0.9rem">收起回复</a>
+					</div>
+				</div>
+				<div class="pjrightbottom" id="messagedetail100" style="display: block;">
+					<div class="pjfloatright2">
+						<div class="img_small" style="background:url(http://123.56.186.12:8101/files/pingdianapp_img/Upload/2017/11/1510657786508.jpg);background-size:cover;background-position:50% 50%;background-repeat:no-repeat;"></div>
+						<div class="pjdetail">
+							<div class="pjdetailmessage">
+								<a class="namefont2">老师name：</a>
+								<a class="messagefont">老师name:啊实打实大师大撒多阿萨德阿萨德啊飒飒的啊实打实大师大啊实打实大师</a>
+							</div><br>
+							<div class="pjdetailtime">
+								<a class="timefont">2018-03-01 16:35 回复</a>
+							</div>
+						</div>
+						<br>
+						<div class="img_small" style="background:url(http://123.56.186.12:8101/files/pingdianapp_img/Upload/2017/11/1510657786508.jpg);background-size:cover;background-position:50% 50%;background-repeat:no-repeat;"></div>
+						<div class="pjdetail">
+							<div class="pjdetailmessage">
+								<a style="font-size: 0.9rem;color:black;">老师name:</a>
+								<a style="font-size: 0.9rem;color:black;">啊实打实大师大撒多阿萨德阿萨德啊飒飒的啊实打实大师大啊实打实大师大撒多所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</a>
+							</div>
+							<div class="pjdetailtime">
+								<a style="font-size: 0.9rem;color:black;">2018-03-01 16:35 回复</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	<!-- --------------------------------------- -->
+	</div>
+
+</div>		
+	
+</body>
+</html>

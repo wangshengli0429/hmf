@@ -5,13 +5,10 @@ package com.hmf.web.config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.hmf.web.entity.PeApps;
-import com.hmf.web.app.service.AppSignService;
 import com.hmf.web.utils.SignUtil;
 import com.hmf.web.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -27,8 +24,8 @@ import java.util.Map;
 public class SignatureInterceptor extends HandlerInterceptorAdapter {
 
     private static Logger logger = LoggerFactory.getLogger(SignatureInterceptor.class);
-        @Autowired
-        private AppSignService appSignService;
+//        @Autowired
+//        private AppSignService appSignService;
     /**
      * 进入拦截器后首先进入的方法
      * 返回false则不再继续执行
@@ -81,16 +78,16 @@ public class SignatureInterceptor extends HandlerInterceptorAdapter {
                     logger.info("请求签名 appid is null");
                     return false;
                 }
-                PeApps peApps = appSignService.selectByAppId(Integer.valueOf(appid));
-                if (null==peApps){
-                    logger.info("请求签名 appid is err");
-                    return false;
-                }
-                if (SignUtil.verify(map,peApps.getAppSecret())){
-                    return true;
-                }else {
-                    return false;
-                }
+//                PeApps peApps = appSignService.selectByAppId(Integer.valueOf(appid));
+//                if (null==peApps){
+//                    logger.info("请求签名 appid is err");
+//                    return false;
+//                }
+//                if (SignUtil.verify(map,peApps.getAppSecret())){
+//                    return true;
+//                }else {
+//                    return false;
+//                }
             }
             return false;
         }

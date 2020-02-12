@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta name="MobileOptimized" content="320"/>
+<title>登录</title>
+<style>
+@charset "utf-8";
+/* CSS Document */
+html {background:#fff;}
+body {font:12px/1.4 arial,helvetica,sans-serif;}
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,textarea,select,button,th,td{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+table {font-size:inherit;font:100%;}
+input,select {font:arial,helvetica,clean,sans-serif;;}
+button {overflow:visible}
+th,em,address,cite {font-style:normal;font-weight:normal;}
+li{list-style:none;}
+img,fieldset {border:0;}
+ins {text-decoration:none;}
+.xieyi{ padding: 10px 1rem; height: auto; overflow: hidden; font-size: 14px; line-height: 1.65rem; }
+.xieyi h3{ text-align: center; font-size: 18px; font-weight: bold; }
+a, a:visited {color: #9EB4CA;text-decoration: none;}
+h1, h2, h3, footer, .gallery {text-align: center;}
+pre {width: 340px;margin: 0 auto;border: dashed 1px #aaa;margin-bottom: 10px;}
+@media (max-width: 480px) {pre {max-width: 98%;}}
+header, footer {display: block;padding: .2em 0;background-color: #555;box-shadow: 0 0 8px #222;}
+footer {margin-top: 1.5em;}
+.content {max-width: 1160px;margin: 0 auto;}
+.gallery:after {content: '';display: block;height: 2px;margin: .5em 0 1.4em;background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(77,77,77,1) 50%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(77,77,77,1) 50%, rgba(0, 0, 0, 0) 100%);
+}
+.gallery img {height: 100%;}
+.gallery a {width: 240px;height: 180px;display: inline-block;overflow: hidden;margin: 4px 6px;box-shadow: 0 0 4px -1px #000;
+}
+.ribbon > img {position: absolute;top: 0;right: 0;border: 0;}
+@media (max-width: 768px) {.sm-hidden {display: none;}}
+.hljs-comment,.hljs-quote{color:#969896}.hljs-deletion,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#c66}.hljs-tag {color: #f8f8f2}.hljs-built_in,.hljs-builtin-name,.hljs-link,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#de935f}.hljs-attr{color:#f0c674}.hljs-addition,.hljs-bullet,.hljs-string,.hljs-symbol{color:#b5bd68}.hljs-section,.hljs-title{color:#81a2be}.hljs-keyword,.hljs-selector-tag{color:#b294bb}.hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.8em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+</style>
+<link href="footer.css" rel="stylesheet">
+<link href="loginPage.css" rel="stylesheet" >
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="md5.js"></script>
+<script src="footer.js"></script>
+<script src="regist.js"></script>
+<script src="login2.js"></script>
+<script src="jquery.jsonp.js"></script>
+</head>
+<body>
+<div id="content1" class="content1">
+	<div style="margin-left: 1rem;margin-right: 1rem;">
+		<div class="title_text">登&nbsp;&nbsp;录</div>
+		
+		<div class="phone">手机</div>
+		<div class="phone_text">
+			<input type="text" id="phone" class="text_css" placeholder="请输入手机号" placeholder-style="color: #949494;">
+			<span id="phoneSpan" class="prompt_span" style="display: none;"></span>
+		</div>
+		
+		<div style="height: 1rem;"></div>
+		<div class="underline"></div>
+		<div style="height: 1rem;"></div>
+		
+		<div class="pwd">密码</div>
+		<div class="pwd_text">
+			<input type="password" id="password" class="text_css" placeholder="密码" placeholder-style="color: #949494;">
+			<span id="passwordSpan" class="prompt_span" style="margin-left: 10px;display: none;"></span>
+		</div>
+		<div class="but_div">
+		<img class="icon1" id="invisible" src="images/invisible_icon.png" onclick="displayCipher()">
+		<img class="icon1" id="visible" src="images/visible_icon.png" onclick="hiddenPassword()" style="display: none;">
+	</div>
+		
+		<div style="height: 1rem;"></div>
+		<div class="underline"></div>
+		<div style="height: 1rem;"></div>
+		
+		<div class="but_div" onclick="register()">注册</div>
+		<div id="errorSpan" style="color: red;font-size: 1rem;text-align: center;"></div>
+		<div class="sub_but" onclick="sign_in()">登&nbsp;&nbsp;录</div>
+	</div>
+	
+</div>
+
+
+<div id="content2"></div>
+
+
+<!-- 
+<div id="content3" class="contents">
+	<div class="footer">
+		<img class="icon" src="images/about_us_ic.png">
+			
+		<div class="text_div" style="float: left;">
+			<font class="text_title1">一堂作文课</font><br>
+			<font class="text_title2">好作文是批改出来的！</font>
+		</div>
+		
+		<img class="guanbi" src="images/guanbi-.png" onclick="closeDownload()">
+		<div class="download_but" onclick="appDownload()">下载app</div>
+	
+	</div>
+</div>
+ -->
+
+</body>
+</html>
