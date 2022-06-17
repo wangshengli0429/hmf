@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.38</version>
+			<version>1.2.83</version>
 		</dependency>
 		<!-- JSONObject对象依赖的jar包 -->
 		<dependency>
@@ -213,7 +213,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.1.39</version>
+            <version>1.2.83</version>
         </dependency>
 		<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
 		<dependency>
